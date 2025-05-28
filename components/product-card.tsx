@@ -47,9 +47,9 @@ export const ProductCard: React.FC<ProductCardProps> = ({
       className={`product-card group bg-background rounded-lg border overflow-hidden ${className}`}
     >
       <div className="relative h-80">
-        <Link href={`${imgPath()}/products/${product.id}`}>
+        <Link href={`/products/${product.id}`}>
           <Image
-            src={`/${
+            src={`${imgPath()}/${
               product.image ?? "placeholder.svg"
             }`}
             alt={product.name || "Product Image"}

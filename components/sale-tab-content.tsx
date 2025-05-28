@@ -6,6 +6,7 @@ import { Badge } from "./ui/badge";
 import { ArrowRight } from "lucide-react";
 import ProductGrid from "./product-grid";
 import { Product } from "@/types/product";
+import { imgPath } from "@/utils/utils";
 
 interface SaleTabContentProps {
   saleProducts: Product[];
@@ -41,7 +42,7 @@ const SaleTabContent: React.FC<SaleTabContentProps> = ({
             className="group relative overflow-hidden rounded-lg aspect-[4/3] block"
           >
             <Image
-              src={`${process.env.NEXT_PUBLIC_IMAGE_BASE_URL}/banner/women-sale.jpg`}
+              src={`${imgPath()}/banner/women-sale.jpg`}
               alt="Women's Sale"
               fill
               className="object-cover transition-transform duration-500 group-hover:scale-105"
@@ -65,7 +66,7 @@ const SaleTabContent: React.FC<SaleTabContentProps> = ({
             className="group relative overflow-hidden rounded-lg aspect-[4/3] block"
           >
             <Image
-              src={`${process.env.NEXT_PUBLIC_IMAGE_BASE_URL}/banner/men-sale.jpg`}
+              src={`${imgPath()}/banner/men-sale.jpg`}
               alt="Men's Sale"
               fill
               className="object-cover transition-transform duration-500 group-hover:scale-105"
@@ -87,7 +88,7 @@ const SaleTabContent: React.FC<SaleTabContentProps> = ({
             className="group relative overflow-hidden rounded-lg aspect-[4/3] block"
           >
             <Image
-              src={`${process.env.NEXT_PUBLIC_IMAGE_BASE_URL}/banner/assessories-sale.jpg`}
+              src={`${imgPath()}/banner/assessories-sale.jpg`}
               alt="Accessories Sale"
               fill
               className="object-cover transition-transform duration-500 group-hover:scale-105"
