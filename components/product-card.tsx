@@ -41,14 +41,16 @@ export const ProductCard: React.FC<ProductCardProps> = ({
     dispatch(removeFromCart(product.id));
   };
 
+  const imgpath = process.env.NEXT_PUBLIC_IMAGE_BASE_URL;
+
   return (
     <div
       className={`product-card group bg-background rounded-lg border overflow-hidden ${className}`}
     >
       <div className="relative h-80">
-        <Link href={`/products/${product.id}`}>
+        <Link href={`${imgpath}/products/${product.id}`}>
           <Image
-            src={`${process.env.NEXT_PUBLIC_IMAGE_BASE_URL}/${
+            src={`/${
               product.image ?? "placeholder.svg"
             }`}
             alt={product.name || "Product Image"}

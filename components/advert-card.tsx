@@ -5,10 +5,11 @@ import { Button } from './ui/button';
 import Link from 'next/link';
 
 const AdvertCard = () => {
+  const imgpath = process.env.NEXT_PUBLIC_IMAGE_BASE_URL;
   return (
     <div className="relative overflow-hidden rounded-xl h-[500px] group">
       <Image
-        src={`${process.env.NEXT_PUBLIC_IMAGE_BASE_URL}/advertisement/saree-advert.jpg`}
+        src={`${imgpath}/advertisement/saree-advert.jpg`}
         alt="Saree collection"
         fill
         className="object-cover transition-transform duration-700 group-hover:scale-105"

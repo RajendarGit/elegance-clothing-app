@@ -4,11 +4,12 @@ import { Button } from './ui/button';
 import Link from 'next/link';
 
 const MembershipBanner = () => {
+  const imgPath = process.env.NEXT_PUBLIC_IMAGE_BASE_URL;
   return (
     <div className="relative overflow-hidden rounded-xl bg-muted">
       <div className="absolute inset-0 z-0">
         <Image
-          src={`${process.env.NEXT_PUBLIC_IMAGE_BASE_URL}/banner/membership.jpg`}
+          src={`${imgPath}/banner/membership.jpg`}
           alt="Membership background"
           fill
           className="object-cover opacity-20"
