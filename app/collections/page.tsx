@@ -7,6 +7,7 @@ import Hero from "@/components/hero"
 import PageHero from "@/components/page-hero"
 import InnerPageSubHeading from "@/components/inner-page-sub-heading"
 import Newsletter from "@/components/newsletter"
+import { imgPath } from "@/utils/utils"
 
 export default function CollectionsPage() {
   return (
@@ -28,7 +29,7 @@ export default function CollectionsPage() {
                 className="group relative overflow-hidden rounded-lg aspect-[16/9] bg-muted"
               >
                 <Image
-                  src={`${process.env.NEXT_PUBLIC_IMAGE_BASE_URL}/banner/${
+                  src={`${imgPath()}/banner/${
                     collection.image || "placeholder.svg"
                   }`}
                   alt={collection.title}
@@ -64,7 +65,7 @@ export default function CollectionsPage() {
                 className="group relative overflow-hidden rounded-lg h-80 block"
               >
                 <Image
-                  src={`${process.env.NEXT_PUBLIC_IMAGE_BASE_URL}/banner/${
+                  src={`${imgPath()}/banner/${
                     collection.image || "placeholder.svg"
                   }`}
                   alt={collection.title}
@@ -94,7 +95,7 @@ export default function CollectionsPage() {
                 className="group relative overflow-hidden rounded-lg aspect-square bg-muted"
               >
                 <Image
-                  src={`${process.env.NEXT_PUBLIC_IMAGE_BASE_URL}/banner/${
+                  src={`${imgPath()}/banner/${
                     collection.image || "placeholder.svg"
                   }`}
                   alt={collection.title}
@@ -131,7 +132,7 @@ export default function CollectionsPage() {
                 className="group relative overflow-hidden rounded-lg h-64 block border"
               >
                 <Image
-                  src={`${process.env.NEXT_PUBLIC_IMAGE_BASE_URL}/banner/${
+                  src={`${imgPath()}/banner/${
                     collection.image || "placeholder.svg"
                   }`}
                   alt={collection.title}

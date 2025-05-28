@@ -3,6 +3,7 @@ import { ArrowRight } from "lucide-react";
 import Link from "next/link";
 import React from "react";
 import Container from "./ui/container";
+import { imgPath } from "@/utils/utils";
 
 interface RelatedCollectionsProps {
   collections: Collection[];
@@ -29,7 +30,7 @@ const RelatedCollections: React.FC<RelatedCollectionsProps> = ({
               >
                 <div
                   className="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-105"
-                  style={{ backgroundImage: `url(${process.env.NEXT_PUBLIC_IMAGE_BASE_URL}/banner/${collection.image})` }}
+                  style={{ backgroundImage: `url(${imgPath()}/banner/${collection.image})` }}
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent" />
                 <div className="absolute bottom-0 left-0 p-6">

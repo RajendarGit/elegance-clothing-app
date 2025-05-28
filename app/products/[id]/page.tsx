@@ -27,6 +27,7 @@ import AddReduceProductQuantity from "@/components/add-reduce-product-quantity";
 import { useAppDispatch } from "@/hooks/use-app-dispatch";
 import { AddToWishlist } from "@/components/wishlist-button";
 import { Share2, Truck } from "lucide-react";
+import { imgPath } from "@/utils/utils";
 
 export default function ProductPage() {
   const { id } = useParams();
@@ -95,7 +96,7 @@ export default function ProductPage() {
         <div className="space-y-4">
           <div className="relative aspect-square overflow-hidden rounded-lg border">
             <Image
-              src={`${process.env.NEXT_PUBLIC_IMAGE_BASE_URL}/${
+              src={`${imgPath()}/${
                 product.image ?? "placeholder.svg"
               }`}
               alt={product.name}

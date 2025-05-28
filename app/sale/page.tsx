@@ -1,8 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { Filter, Percent, SortDesc, Tag, X } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { SortDesc, Tag } from "lucide-react";
 import {
   Select,
   SelectContent,
@@ -11,9 +10,6 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Accordion } from "@/components/ui/accordion";
-import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
-import { ScrollArea } from "@/components/ui/scroll-area";
-import { Badge } from "@/components/ui/badge";
 import ProductGrid from "@/components/product-grid";
 import { dummyProducts } from "@/data/products";
 import type { Product } from "@/types/product";
@@ -25,7 +21,6 @@ import FlashSaleSection from "@/components/flash-sale-section";
 import FilterCategories from "@/components/filter-categories";
 import FilterPriceRange from "@/components/filter-price-range";
 import FilterDiscount from "@/components/filter-discount";
-import { generalMessages } from "@/lib/messages";
 import FilterProductNotFound from "@/components/filter-product-not-found";
 import Newsletter from "@/components/newsletter";
 import ActiveFilterSection from "@/components/active-filter-section";

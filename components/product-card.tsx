@@ -13,6 +13,7 @@ import { useAppDispatch } from "@/hooks/use-app-dispatch";
 import { useAppSelector } from "@/hooks/use-app-selector";
 import RemoveFromCart from "./remove-from-cart";
 import { AddToWishlist } from "./wishlist-button";
+import { imgPath } from "@/utils/utils";
 
 interface ProductCardProps {
   product: Product;
@@ -41,14 +42,12 @@ export const ProductCard: React.FC<ProductCardProps> = ({
     dispatch(removeFromCart(product.id));
   };
 
-  const imgpath = process.env.NEXT_PUBLIC_IMAGE_BASE_URL;
-
   return (
     <div
       className={`product-card group bg-background rounded-lg border overflow-hidden ${className}`}
     >
       <div className="relative h-80">
-        <Link href={`${imgpath}/products/${product.id}`}>
+        <Link href={`${imgPath()}/products/${product.id}`}>
           <Image
             src={`/${
               product.image ?? "placeholder.svg"

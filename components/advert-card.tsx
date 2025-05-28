@@ -3,13 +3,13 @@ import React from 'react'
 import { Badge } from './ui/badge';
 import { Button } from './ui/button';
 import Link from 'next/link';
+import { imgPath } from '@/utils/utils';
 
 const AdvertCard = () => {
-  const imgpath = process.env.NEXT_PUBLIC_IMAGE_BASE_URL;
   return (
     <div className="relative overflow-hidden rounded-xl h-[500px] group">
       <Image
-        src={`${imgpath}/advertisement/saree-advert.jpg`}
+        src={`${imgPath()}/advertisement/saree-advert.jpg`}
         alt="Saree collection"
         fill
         className="object-cover transition-transform duration-700 group-hover:scale-105"

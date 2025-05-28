@@ -1,3 +1,4 @@
+import { imgPath } from "@/utils/utils";
 import React from "react";
 
 interface InnerHeroProps {
@@ -14,7 +15,7 @@ const InnerHero: React.FC<InnerHeroProps> = ({ collection }) => {
       <div className="absolute inset-0 z-0">
         <div
           className="w-full h-full bg-cover bg-center"
-          style={{ backgroundImage: `url(${process.env.NEXT_PUBLIC_IMAGE_BASE_URL}/banner/${collection.image})` }}
+          style={{ backgroundImage: `url(${imgPath()}/banner/${collection.image})` }}
         />
         <div className="absolute inset-0 bg-black/40" />
       </div>
