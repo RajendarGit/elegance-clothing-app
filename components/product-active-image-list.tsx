@@ -1,6 +1,7 @@
 import React, { FC } from "react";
 import { Button } from "./ui/button";
 import Image from "next/image";
+import { imgPath } from "@/utils/utils";
 
 interface ProductActiveImageListProps {
   productImages: string[];
@@ -24,7 +25,7 @@ const ProductActiveImageList: FC<ProductActiveImageListProps> = ({
           onClick={() => setActiveImage(index)}
         >
           <Image
-            src={`${process.env.NEXT_PUBLIC_IMAGE_BASE_URL}/${
+            src={`${imgPath()}/${
               image ?? "placeholder.svg"
             }`}
             alt={`Product image ${index + 1}`}

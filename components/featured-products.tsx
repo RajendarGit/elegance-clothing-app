@@ -4,11 +4,9 @@ import { useMemo, useState } from "react"
 import Link from "next/link"
 import { useDispatch, useSelector } from "react-redux"
 import { addToCart } from "@/redux/features/cart-slice"
-import { addToWishlist } from "@/redux/features/wishlist-slice"
 import type { RootState } from "@/redux/store"
 import { useToast } from "@/hooks/use-toast"
 import type { Product } from "@/types/product"
-// import { dummyProducts } from "@/data/products"
 import { ProductCard } from "./product-card"
 import FeaturedProductsFilter from "./featured-products-filter"
 import { Button } from "@/components/ui/button"
@@ -44,14 +42,6 @@ export default function FeaturedProducts() {
     })
   }
 
-  const handleAddToWishlist = (product: Product) => {
-    dispatch(addToWishlist(product))
-    toast({
-      title: "Added to wishlist",
-      description: `${product.name} has been added to your wishlist`,
-    })
-  }
-
   return (
     <section>
       <Container>
@@ -71,7 +61,6 @@ export default function FeaturedProducts() {
               key={product.id}
               product={product}
               onAddToCart={handleAddToCart}
-              onAddToWishlist={handleAddToWishlist}
             />
           ))}
         </div>

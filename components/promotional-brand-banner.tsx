@@ -1,3 +1,4 @@
+import { imgPath } from '@/utils/utils';
 import Image from 'next/image';
 import React from 'react'
 
@@ -51,7 +52,7 @@ const PromotionalBrandBanner = () => {
             className="grayscale hover:grayscale-0 transition-all duration-300"
           >
             <Image
-              src={`${process.env.NEXT_PUBLIC_IMAGE_BASE_URL}/brands/${brand.src}`}
+              src={`${imgPath()}/brands/${brand.src}`}
               alt={brand.name}
               width={120}
               height={60}
