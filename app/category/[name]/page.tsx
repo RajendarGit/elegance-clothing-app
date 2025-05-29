@@ -18,7 +18,7 @@ const CategoryPage = () => {
   const router = useRouter();
   const params = useParams();
   const name = typeof params.name === "string" ? params.name : "";
-  const [categoryProducts, setCategoryProducts] = useState<Product[]>([]); // ✅ use correct type
+  const [categoryProducts, setCategoryProducts] = useState<Product[]>([]);
 
   useEffect(() => {
     if (!name) {

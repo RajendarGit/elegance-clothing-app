@@ -39,11 +39,6 @@ function CartPage() {
     })
   }
 
-  const handleUpdateQuantity = (id: string, quantity: number) => {
-    if (quantity < 1) return
-    dispatch(updateQuantity({ id: Number(id), quantity }))
-  }
-
   const handleApplyPromo = () => {
     if (!promoCode) return
 

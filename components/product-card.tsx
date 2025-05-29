@@ -18,15 +18,14 @@ import { imgPath } from "@/utils/utils";
 interface ProductCardProps {
   product: Product;
   className?: string;
-  onAddToCart?: (product: Product) => void;
+  // onAddToCart?: (product: Product) => void;
 }
 
 export const ProductCard: React.FC<ProductCardProps> = ({
   product,
   className,
-  onAddToCart,
+  // onAddToCart,
 }) => {
-  const dispatch = useAppDispatch();
 
   const isAuthenticated = useAppSelector((state) => state.auth.isAuthenticated);
   const cartItems = useAppSelector((state) => state.cart.items);
@@ -37,10 +36,6 @@ export const ProductCard: React.FC<ProductCardProps> = ({
       item.selectedColor === product.selectedColor &&
       item.selectedSize === product.selectedSize
   );
-
-  const handleRemoveFromCart = () => {
-    dispatch(removeFromCart(product.id));
-  };
 
   return (
     <div
@@ -83,11 +78,11 @@ export const ProductCard: React.FC<ProductCardProps> = ({
             <ProductColor colors={product.colors} />
           </div>
           {isAuthenticated && isInCart ? (
-            <RemoveFromCart handleRemoveFromCart={handleRemoveFromCart} />
+            <RemoveFromCart id={product.id} />
           ) : (
             <>
-              {isAuthenticated && onAddToCart ? (
-                <AddToCart product={product} onAddToCart={onAddToCart} />
+              {isAuthenticated ? (
+                <AddToCart product={product} />
               ) : (
                 <Link href="/login">
                   <AddToCart product={product} link={true} />

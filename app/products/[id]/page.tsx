@@ -3,8 +3,7 @@
 import { useState } from "react";
 import Image from "next/image";
 import { useParams } from "next/navigation";
-import { addToCart, removeFromCart } from "@/redux/features/cart-slice";
-import { addToWishlist } from "@/redux/features/wishlist-slice";
+import { removeFromCart } from "@/redux/features/cart-slice";
 import type { RootState } from "@/redux/store";
 import { useToast } from "@/hooks/use-toast";
 import { Button } from "@/components/ui/button";
@@ -16,13 +15,11 @@ import ProductReviewCount from "@/components/product-review-count";
 import ProductDiscountWithPrice from "@/components/product-discount-with-price";
 import ProductColorRanges from "@/components/product-color-ranges";
 import ProductSizeRanges from "@/components/product-size-ranges";
-import ProductQuantityOptions from "@/components/product-quantity-options";
 import AddToCart from "@/components/add-to-cart";
 import ProductDescriptionDetailsReview from "@/components/product-description-details-review";
 import { useAppSelector } from "@/hooks/use-app-selector";
 import RemoveFromCart from "@/components/remove-from-cart";
 import Link from "next/link";
-import { toast } from "@/components/ui/use-toast";
 import AddReduceProductQuantity from "@/components/add-reduce-product-quantity";
 import { useAppDispatch } from "@/hooks/use-app-dispatch";
 import { AddToWishlist } from "@/components/wishlist-button";
@@ -62,32 +59,6 @@ export default function ProductPage() {
     "/placeholder.svg?height=800&width=600",
     "/placeholder.svg?height=800&width=600",
   ];
-
-  const handleAddToCart = () => {
-    if (!user) {
-      toast({
-        title: "Please login",
-        description: "You need to login to add items to your cart",
-        variant: "destructive",
-      });
-      return;
-    }
-
-    dispatch(
-      addToCart({
-        ...product,
-        quantity: 1,
-        selectedColor,
-        selectedSize,
-      })
-    );
-
-    toast({
-      title: "Added to cart",
-      description: `${product.name} has been added to your cart`,
-    });
-  };
-
  
   return (
     <Container>
@@ -167,14 +138,13 @@ export default function ProductPage() {
 
           <div className="flex flex-col sm:flex-row gap-3">
             {isAuthenticated && isInCart ? (
-              <RemoveFromCart handleRemoveFromCart={handleRemoveFromCart} />
+              <RemoveFromCart id={product.id} />
             ) : (
               <>
-                {isAuthenticated && handleAddToCart ? (
+                {isAuthenticated ? (
                   <>
                     <AddToCart
                       product={product}
-                      onAddToCart={handleAddToCart}
                     />
                     <AddToWishlist product={product} />
                   </>

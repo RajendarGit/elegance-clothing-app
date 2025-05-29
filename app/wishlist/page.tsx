@@ -1,17 +1,13 @@
 "use client"
 
 import { useState } from "react"
-import Image from "next/image"
 import Link from "next/link"
-import { removeFromWishlist, clearWishlist } from "@/redux/features/wishlist-slice"
+import { clearWishlist } from "@/redux/features/wishlist-slice"
 import { addToCart } from "@/redux/features/cart-slice"
 import type { RootState } from "@/redux/store"
 import { Button } from "@/components/ui/button"
-import { Heart, ShoppingBag, Trash2, X } from "lucide-react"
+import { Heart, Trash2, X } from "lucide-react"
 import { useToast } from "@/hooks/use-toast"
-import MainNav from "@/components/main-nav"
-import Footer from "@/components/footer"
-import { Badge } from "@/components/ui/badge"
 import {
   AlertDialog,
   AlertDialogAction,
@@ -34,14 +30,6 @@ export default function WishlistPage() {
   const dispatch = useAppDispatch()
   const { toast } = useToast()
   const [isClearing, setIsClearing] = useState(false)
-
-  const handleRemoveFromWishlist = (productId: string) => {
-    dispatch(removeFromWishlist(productId))
-    toast({
-      title: "Removed from wishlist",
-      description: "The item has been removed from your wishlist",
-    })
-  }
 
   const handleAddToCart = (product: any) => {
     if (!user) {
@@ -143,99 +131,6 @@ export default function WishlistPage() {
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
           {items.map((product) => (
             <ProductCard key={product.id} product={product} />
-            // <div
-            //   key={product.id}
-            //   className="group bg-background rounded-lg border overflow-hidden relative"
-            // >
-            //   <button
-            //     onClick={() => handleRemoveFromWishlist(String(product.id))}
-            //     className="absolute top-2 right-2 z-10 p-2 bg-background/80 rounded-full opacity-0 group-hover:opacity-100 transition-opacity hover:bg-background"
-            //   >
-            //     <X className="h-4 w-4" />
-            //     <span className="sr-only">Remove from wishlist</span>
-            //   </button>
-
-            //   <div className="relative h-80">
-            //     <Link href={`/products/${product.id}`}>
-            //       <Image
-            //         src={product.image || "/placeholder.svg"}
-            //         alt={product.name}
-            //         fill
-            //         className="object-cover transition-transform duration-300 group-hover:scale-105"
-            //       />
-            //     </Link>
-            //     {product.isNew && (
-            //       <Badge className="absolute top-2 left-2 z-10">New</Badge>
-            //     )}
-            //     {product.discount > 0 && (
-            //       <Badge
-            //         variant="destructive"
-            //         className="absolute top-2 left-2 z-10 mt-8"
-            //       >
-            //         -{product.discount}%
-            //       </Badge>
-            //     )}
-            //   </div>
-
-            //   <div className="p-4">
-            //     <div className="mb-4">
-            //       <Link
-            //         href={`/products/${product.id}`}
-            //         className="hover:underline"
-            //       >
-            //         <h3 className="font-medium mb-2">{product.name}</h3>
-            //       </Link>
-            //       <div className="flex items-center justify-between">
-            //         {product.discount > 0 ? (
-            //           <div className="flex items-center gap-2">
-            //             <span className="font-bold text-primary">
-            //               $
-            //               {(
-            //                 product.price *
-            //                 (1 - product.discount / 100)
-            //               ).toFixed(2)}
-            //             </span>
-            //             <span className="text-muted-foreground line-through text-sm">
-            //               ${product.price.toFixed(2)}
-            //             </span>
-            //           </div>
-            //         ) : (
-            //           <span className="font-bold">
-            //             ${product.price.toFixed(2)}
-            //           </span>
-            //         )}
-            //       </div>
-            //     </div>
-
-            //     <div className="flex items-center justify-between">
-            //       <div className="flex space-x-1">
-            //         {product.colors.slice(0, 3).map((color, index) => (
-            //           <div
-            //             key={index}
-            //             className="w-4 h-4 rounded-full border"
-            //             style={{ backgroundColor: color }}
-            //           />
-            //         ))}
-            //         {product.colors.length > 3 && (
-            //           <div className="w-4 h-4 rounded-full border bg-muted flex items-center justify-center">
-            //             <span className="text-xs">
-            //               +{product.colors.length - 3}
-            //             </span>
-            //           </div>
-            //         )}
-            //       </div>
-
-            //       <Button
-            //         size="sm"
-            //         className="flex items-center"
-            //         onClick={() => handleAddToCart(product)}
-            //       >
-            //         <ShoppingBag className="h-4 w-4 mr-2" />
-            //         Add to Cart
-            //       </Button>
-            //     </div>
-            //   </div>
-            // </div>
           ))}
         </div>
       )}
