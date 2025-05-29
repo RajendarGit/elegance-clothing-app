@@ -28,9 +28,7 @@ export default function CollectionsPage() {
                 className="group relative overflow-hidden rounded-lg aspect-[16/9] bg-muted"
               >
                 <Image
-                  src={`${imgPath()}/banner/${
-                    collection.image || "placeholder.svg"
-                  }`}
+                  src={imgPath(`/banner/${collection.image || "placeholder.svg"}`)}
                   alt={collection.title}
                   fill
                   className="object-cover transition-transform duration-500 group-hover:scale-105"
@@ -64,9 +62,7 @@ export default function CollectionsPage() {
                 className="group relative overflow-hidden rounded-lg h-80 block"
               >
                 <Image
-                  src={`${imgPath()}/banner/${
-                    collection.image || "placeholder.svg"
-                  }`}
+                  src={imgPath(`/banner/${collection.image || "placeholder.svg"}`)}
                   alt={collection.title}
                   fill
                   className="object-cover transition-transform duration-500 group-hover:scale-105"
@@ -94,9 +90,7 @@ export default function CollectionsPage() {
                 className="group relative overflow-hidden rounded-lg aspect-square bg-muted"
               >
                 <Image
-                  src={`${imgPath()}/banner/${
-                    collection.image || "placeholder.svg"
-                  }`}
+                  src={imgPath(`/banner/${collection.image || "placeholder.svg"}`)}
                   alt={collection.title}
                   fill
                   className="object-cover transition-transform duration-500 group-hover:scale-105"
@@ -131,9 +125,7 @@ export default function CollectionsPage() {
                 className="group relative overflow-hidden rounded-lg h-64 block border"
               >
                 <Image
-                  src={`${imgPath()}/banner/${
-                    collection.image || "placeholder.svg"
-                  }`}
+                  src={imgPath(`/banner/${collection.image || "placeholder.svg"}`)}
                   alt={collection.title}
                   fill
                   className="object-cover transition-transform duration-500 group-hover:scale-105"

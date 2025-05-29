@@ -25,9 +25,7 @@ const ProductActiveImageList: FC<ProductActiveImageListProps> = ({
           onClick={() => setActiveImage(index)}
         >
           <Image
-            src={`${imgPath()}/${
-              image ?? "placeholder.svg"
-            }`}
+            src={imgPath(image ?? "placeholder.svg")}
             alt={`Product image ${index + 1}`}
             fill
             className="object-cover"

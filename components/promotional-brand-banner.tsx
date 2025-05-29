@@ -52,7 +52,7 @@ const PromotionalBrandBanner = () => {
             className="grayscale hover:grayscale-0 transition-all duration-300"
           >
             <Image
-              src={`${imgPath()}/brands/${brand.src}`}
+              src={imgPath(`brands/${brand.src}`)}
               alt={brand.name}
               width={120}
               height={60}

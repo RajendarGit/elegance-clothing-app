@@ -67,9 +67,7 @@ export default function ProductPage() {
         <div className="space-y-4">
           <div className="relative aspect-square overflow-hidden rounded-lg border">
             <Image
-              src={`${imgPath()}/${
-                product.image ?? "placeholder.svg"
-              }`}
+              src={imgPath(product.image ?? "placeholder.svg")}
               alt={product.name}
               fill
               className="object-cover"

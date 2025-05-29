@@ -44,9 +44,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({
       <div className="relative h-80">
         <Link href={`/products/${product.id}`}>
           <Image
-            src={`${imgPath()}/${
-              product.image ?? "placeholder.svg"
-            }`}
+            src={imgPath(product.image ?? "placeholder.svg")}
             alt={product.name || "Product Image"}
             fill
             className="object-cover transition-transform duration-300 group-hover:scale-105"

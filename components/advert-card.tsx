@@ -9,7 +9,7 @@ const AdvertCard = () => {
   return (
     <div className="relative overflow-hidden rounded-xl h-[500px] group">
       <Image
-        src={`${imgPath()}/advertisement/saree-advert.jpg`}
+        src={imgPath("advertisement/saree-advert.jpg")}
         alt="Saree collection"
         fill
         className="object-cover transition-transform duration-700 group-hover:scale-105"

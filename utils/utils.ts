@@ -5,6 +5,6 @@ export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs))
 }
 
-export function imgPath() {
-  return '/assets/images';
+export function imgPath(path: string) {
+  return `/assets/images/${path}`;
 }
