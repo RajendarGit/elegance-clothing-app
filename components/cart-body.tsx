@@ -4,6 +4,11 @@ import React, { FC } from "react";
 import { Button } from "./ui/button";
 import { Minus, Plus, Trash2 } from "lucide-react";
 import AddReduceProductQuantity from "./add-reduce-product-quantity";
+import { imgPath } from "@/utils/utils";
+import { useAppDispatch } from "@/hooks/use-app-dispatch";
+import { removeFromCart } from "@/redux/features/cart-slice";
+import { useToast } from "@/hooks/use-toast";
+import { addToCartMessages } from "@/lib/messages";
 
 interface CartBodyProps {
   items: {
@@ -15,13 +20,22 @@ interface CartBodyProps {
     price: number;
     quantity: number;
   }[];
-  handleRemoveItem: (id: string) => void;
 }
 
 const CartBody: FC<CartBodyProps> = ({
   items,
-  handleRemoveItem,
 }) => {
+  const dispatch = useAppDispatch()
+  const { toast } = useToast();
+
+  const handleRemoveItem = (id: string) => {
+    dispatch(removeFromCart(Number(id)))
+    toast({
+      title: addToCartMessages.itemRemovedTitle,
+      description: addToCartMessages.itemRemovedDescription,
+    })
+  }
+
   return (
     <>
       {items.map((item) => (
@@ -30,7 +44,7 @@ const CartBody: FC<CartBodyProps> = ({
             <div className="flex items-center">
               <div className="relative w-16 h-16 rounded overflow-hidden mr-4">
                 <Image
-                  src={`${process.env.NEXT_PUBLIC_IMAGE_BASE_URL}/${item.image}`}
+                  src={`${imgPath()}/${item.image}`}
                   alt={item.name}
                   fill
                   className="object-cover"

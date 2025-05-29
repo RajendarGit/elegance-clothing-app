@@ -1,78 +1,19 @@
-"use client"
+"use client";
 
-import { useState } from "react"
-import Link from "next/link"
-import { useRouter } from "next/navigation"
-import { useDispatch } from "react-redux"
-import { removeFromCart, updateQuantity, clearCart } from "@/redux/features/cart-slice"
-import { Button } from "@/components/ui/button"
-import { useToast } from "@/hooks/use-toast"
-import Container from "@/components/ui/container"
-import EmptyCartSignIn from "@/components/empty-cart-sign-in"
-import EmptyCart from "@/components/empty-cart"
-import CartBody from "@/components/cart-body"
-import OrderSummary from "@/components/order-summary"
-import { addToCartMessages } from "@/lib/messages"
-import { useAppSelector } from "@/hooks/use-app-selector"
-import { withAuthProtection } from "@/components/hoc/with-auth-protection"
+import Link from "next/link";
+import { useDispatch } from "react-redux";
+import { Button } from "@/components/ui/button";
+import Container from "@/components/ui/container";
+import EmptyCart from "@/components/empty-cart";
+import CartBody from "@/components/cart-body";
+import OrderSummary from "@/components/order-summary";
+import { useAppSelector } from "@/hooks/use-app-selector";
+import { withAuthProtection } from "@/components/hoc/with-auth-protection";
+import { clearCart } from "@/redux/features/cart-slice";
 
 function CartPage() {
   const { items } = useAppSelector((state) => state.cart);
-  const { user } = useAppSelector((state) => state.auth);
-  const dispatch = useDispatch()
-  const router = useRouter()
-  const { toast } = useToast()
-  const [promoCode, setPromoCode] = useState("")
-  const [isApplyingPromo, setIsApplyingPromo] = useState(false)
-
-  // Calculate cart totals
-  const subtotal = items.reduce((total, item) => total + item.price * (item.quantity ?? 1), 0)
-  const shipping = subtotal > 50 ? 0 : 5.99
-  const discount = 0 // Would be calculated based on promo code
-  const total = subtotal + shipping - discount
-
-  const handleRemoveItem = (id: string) => {
-    dispatch(removeFromCart(Number(id)))
-    toast({
-      title: addToCartMessages.itemRemovedTitle,
-      description: addToCartMessages.itemRemovedDescription,
-    })
-  }
-
-  const handleApplyPromo = () => {
-    if (!promoCode) return
-
-    setIsApplyingPromo(true)
-
-    // Simulate API call to validate promo code
-    setTimeout(() => {
-      toast({
-        title: addToCartMessages.inValidPromoCodeTitle,
-        description: addToCartMessages.invalidPromoCodeDescription,
-        variant: "destructive",
-      })
-      setIsApplyingPromo(false)
-    }, 1000)
-  }
-
-  const handleCheckout = () => {
-    if (items.length === 0) {
-      toast({
-        title: addToCartMessages.emptyCartTitle,
-        description: addToCartMessages.emptyCartDescription,
-        variant: "destructive",
-      })
-      return
-    }
-
-    router.push("/checkout")
-  }
-
-  if (!user) {
-    return (
-      <EmptyCartSignIn />
-    );
-  }
+  const dispatch = useDispatch();
 
   return (
     <Container>
@@ -97,11 +38,10 @@ function CartPage() {
                 </thead>
                 <tbody>
                   <CartBody
-                    items={items.map(item => ({
+                    items={items.map((item) => ({
                       ...item,
                       id: String(item.id),
                     }))}
-                    handleRemoveItem={handleRemoveItem}
                   />
                 </tbody>
               </table>
@@ -118,17 +58,7 @@ function CartPage() {
           </div>
 
           <div>
-            <OrderSummary
-              subtotal={subtotal}
-              shipping={shipping}
-              discount={discount}
-              total={total}
-              promoCode={promoCode}
-              isApplyingPromo={isApplyingPromo}
-              setPromoCode={setPromoCode}
-              handleApplyPromo={handleApplyPromo}
-              handleCheckout={handleCheckout}
-            />
+            <OrderSummary />
           </div>
         </div>
       )}
