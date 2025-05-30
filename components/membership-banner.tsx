@@ -9,7 +9,7 @@ const MembershipBanner = () => {
     <div className="relative overflow-hidden rounded-xl bg-muted">
       <div className="absolute inset-0 z-0">
         <Image
-          src={`${imgPath()}/banner/membership.jpg`}
+          src={imgPath("/banner/membership.jpg")}
           alt="Membership background"
           fill
           className="object-cover opacity-20"
